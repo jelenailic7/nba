@@ -7,7 +7,10 @@ use App\Team;
 
 class TeamsController extends Controller
 {
-   
+   public function __construct()
+   {
+        $this->middleware('auth',['except'=>'index']);
+   }
 
     public function index() {
         $teams = Team::all();
@@ -15,7 +18,7 @@ class TeamsController extends Controller
     }
 
     public function show($id) {
-        $team = Team::find($id);
+        $team = Team::with('comments')->find($id);
         return view('teams.show', compact('team'));
     }
 

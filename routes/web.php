@@ -17,9 +17,12 @@ Route::get('/', function () {
 Route::get('/teams', 'TeamsController@index');
 Route::get('/teams/{id}', 'TeamsController@show');
 Route::get('/players/{id}', 'PlayersController@show');
+
+Route::post('/teams/{id}/comments',['as'=>'comment-store','uses'=> 'CommentsController@store']);
 Route::get('/register', 'RegisterController@create');
 Route::post('/register', 'RegisterController@store');
-Route::get('/login', 'LoginController@create');
+Route::get('/login', 'LoginController@create')->name('login');
 Route::post('login','LoginController@store');
 Route::get('logout','LoginController@destroy');
+Route::get('/verify/{id}','LoginController@verify');
 

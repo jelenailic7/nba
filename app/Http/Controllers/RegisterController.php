@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail\VerifyMail;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,9 @@ class RegisterController extends Controller
     $user->password = bcrypt(request('password'));
     $user->save();
 
+    Mail::to($user)->send(new VerifyMail($user));
+
     auth()->login($user);
-    return redirect('/teams');
+    return redirect('/login');
    }
 }

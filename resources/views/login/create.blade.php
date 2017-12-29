@@ -3,6 +3,11 @@
 
 
 @section('content')
+
+                    @if (Auth::check())
+                    <div class="alert alert-success">Check your email and verify
+                    </div>
+                        @endif
     <h2 class="blog-post-title">Login</h2>
 
     <form method="POST" action="{{'/login' }}">
