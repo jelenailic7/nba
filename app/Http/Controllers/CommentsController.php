@@ -7,18 +7,20 @@ use App\Comment;
 use App\User;
 use App\Team;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\CommentReceived;
+use Illuminate\Support\Facades\Mail;
 
 class CommentsController extends Controller
 {
    public function __construct()
    {
-    $this->middleware('forbidenComments')->only('store');
+    $this->middleware('forbiddenComments');
    }
     public function store(Request $request,$id)
     {
 
         $request->validate(
-        ['text'=>'required']);
+        ['text'=>'required|max:10']);
 
         $comment = new Comment();
         $comment->text = $request['text'];
@@ -26,7 +28,10 @@ class CommentsController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->save();
 
-        return back();
+        $team = Team::find($id);
+        Mail::to($team->email)->send(new CommentReceived($team));
+
+        return back ();
 
     }
 }

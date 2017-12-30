@@ -7,10 +7,7 @@ use App\User;
 
 class LoginController extends Controller
 {
-    public function __construct()
-   {
-       $this->middleware('guest');
-    }
+   
 
    public function destroy()
    {
@@ -49,7 +46,7 @@ class LoginController extends Controller
 
        auth()->login($user);
 
-       return view ('teams.index')->with('user',$user);
+       return redirect('/teams');
 
    }
 }

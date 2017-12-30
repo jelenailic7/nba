@@ -17,12 +17,12 @@ class ForbidenComments
     {
         $words = explode(" ",$request->text);
         foreach ($words as $word){
-            if($word ='hate' || $word = 'stupid'||$word = 'idiot'){
+            if($word ==='hate' || $word === 'stupid'||$word === 'idiot'){
                 return response(view('forbidden-comment'));   
-        }
-            else{
-               return $next($request);
+             }
             }
+               return $next($request);
+            
         }
-    }
+    
 }
