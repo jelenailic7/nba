@@ -8,6 +8,8 @@ use App\User;
 use App\Team;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\CommentReceived;
+use App\Mail\CommentNotification;
+
 use Illuminate\Support\Facades\Mail;
 
 class CommentsController extends Controller
@@ -29,7 +31,8 @@ class CommentsController extends Controller
         $comment->save();
 
         $team = Team::find($id);
-        Mail::to($team->email)->send(new CommentReceived($team));
+        Mail::to($team->email)->send(new CommentNotification($team));
+
 
         return back ();
 

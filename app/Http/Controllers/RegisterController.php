@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\User;
 use App\Mail\VerifyMail;
+use App\Mail\UserVerify;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterController extends Controller
     $user->password = bcrypt(request('password'));
     $user->save();
 
-    Mail::to($user)->send(new VerifyMail($user));
+    Mail::to($user)->send(new UserVerify($user));
 
     auth()->login($user);
     return redirect('/login');

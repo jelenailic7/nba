@@ -1,1 +1,0 @@
-<h3>You have a new comment : {{$team->name}} </h3>

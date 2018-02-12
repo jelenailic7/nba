@@ -8,12 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CommentReceived extends Mailable
+class CommentNotification extends Mailable
 {
-    public $team;
-
     use Queueable, SerializesModels;
-
+    public $team;
     /**
      * Create a new message instance.
      *
@@ -31,6 +29,9 @@ class CommentReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('email.comment-received');
+        return $this->markdown('email.CommentNotification');
     }
 }
+
+
+//Generating Markdown Mailables
