@@ -9,8 +9,8 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::paginate(10);
-        return view('news.index')->with('news',$news);
+        $news = News::with('user')->paginate(10); //eager loading, from 141.9->68.9
+      return view('news.index')->with('news',$news);
     }
     public function show($id)
     {
