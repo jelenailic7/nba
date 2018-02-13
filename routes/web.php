@@ -29,5 +29,7 @@ Route::get('/verify/{id}','LoginController@verify');
 Route::get('/news', 'NewsController@index');
 Route::get('/news/{id}','NewsController@show');
 Route::get('/news/team/{team}','TeamsController@getTeamNews');
+Route::get('/news/create', ['as' => 'create-news', 'uses' => 'NewsController@create']);
+Route::post('/news/store', 'NewsController@store');
 
 

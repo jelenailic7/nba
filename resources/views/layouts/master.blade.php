@@ -17,6 +17,7 @@
                     <nav class="nav blog-nav">
                     <a class="nav-link ml-auto" href="/teams">Teams</a>
                     <a class="nav-link ml-auto" href="/news">News</a>
+                    <a class="nav-link ml-auto" href="/news/create">Create news</a>
     
                         @if (Auth::check())
                         <a class="nav-link ml-auto" href="#">{{ Auth()->user()->name }}</a>
@@ -34,10 +35,10 @@
                 <div class="col-sm-8 blog-main">
                     @yield('content')
                 </div>
-                <div class="col-sm-3 offset-sm-1 blog-sidebar">
-                </div>
-            </div>
-        </div>
-  
+            
+            @if (Auth::check())
+                @include('partials.sidebar')
+             @endif
+             </div>
     </body>
 </html>

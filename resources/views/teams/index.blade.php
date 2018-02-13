@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',  ['teams' => $teams])
 @section('content')
         <h5>Teams list</h5>
         <div class="col-md-4">

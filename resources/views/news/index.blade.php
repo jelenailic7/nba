@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<a href="{{ route('create-news') }}">Create new news </a>
         <h5>News</h5>
         <div class="col-md-4">
             <ul class="list-unstyled">
@@ -9,6 +10,5 @@
                 </li>
             @endforeach
             </ul>
-            {{ $news->links() }}
     </div>
 @endsection
