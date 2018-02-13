@@ -15,7 +15,7 @@
 </ul>
 
         <hr>
-        <h4>Comments:</h4>
+        <h6>Comments:</h6>
         <ul class="list-unstyled">
             @foreach($team->comments as $comment)
                 <li>
@@ -29,7 +29,7 @@
             @endforeach
         </ul>
 
-    <h4>Post a comment</h4>
+    <h6>Post a comment</h6>
     <form method="POST" action=" {{ route('comment-store',['id'=>$team->id])}}">
 
         {{ csrf_field() }}
@@ -59,4 +59,5 @@
 
             @endforeach
          @endif
+    <a href="/news/team/{{ $team->name }}">Team news </a>
 @endsection

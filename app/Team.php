@@ -14,4 +14,11 @@ class Team extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function news(){
+        return $this->belongsToMany(News::class,'news_team');
+    }
+    public function getRouteKeyName()
+    {
+        return'name'; //umesto url::route('teams.show',$team->name) bice samo ('teams.show',$team)
+    }
 }
